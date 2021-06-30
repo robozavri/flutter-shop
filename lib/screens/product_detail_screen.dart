@@ -14,6 +14,8 @@ class ProductDetailScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productId =
         ModalRoute.of(context).settings.arguments as String; // is the id!
+    // რამდენი Products items შეიცვლება (წაიშლება ან დაემატება და განახლდება შიგნით რამე იმდენი აქ ხელახლა გაუშვებს widget run )
+    // რაც არ გვჭირდება იმიტორო უბრალოდ უნდა მოვძებნოთ და გამოვიტანოთ კონკრეტული პროდუქტი. ამიტომ  listen: false, დავაყენოთ devault true ზე არის
     final loadedProduct = Provider.of<Products>(
       context,
       listen: false,
