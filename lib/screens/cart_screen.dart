@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:shop/providers/cart.dart' show Cart;
 import 'package:provider/provider.dart';
 import 'package:shop/widgets/cart_item.dart' as ci;
-
-import 'dart:convert';
-import 'dart:developer' as developer;
 
 class CartScreen extends StatelessWidget {
   static const routeName = '/cart';
 
   @override
   Widget build(BuildContext context) {
-    final cart = Provider.of<Cart>(context, listen: false);
-    // print(cart.items);
-    // developer.log(
-    //   'log me',
-    //   name: 'cart.items',
-    //   error: jsonEncode(cart.items),
-    // );
+    final cart = Provider.of<Cart>(context, listen: true);
 
     return Scaffold(
       appBar: AppBar(
@@ -62,6 +52,7 @@ class CartScreen extends StatelessWidget {
               itemCount: cart.items.length,
               itemBuilder: (ctx, i) => ci.CartItem(
                 cart.items.values.toList()[i].id,
+                cart.items.keys.toList()[i],
                 cart.items.values.toList()[i].price,
                 cart.items.values.toList()[i].quantity,
                 cart.items.values.toList()[i].title,
